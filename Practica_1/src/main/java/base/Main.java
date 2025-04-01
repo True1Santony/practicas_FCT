@@ -27,7 +27,7 @@ public class Main {
     }
 
     private static void executeMethods(Vehicle vehicle) {
-        vehicle.accelerate();;
+        vehicle.accelerate();
         vehicle.brake();
         vehicle.displayInformation();
     }
