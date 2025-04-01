@@ -1,4 +1,4 @@
-package model;
+package com.practica1.model;
 
 public abstract class Vehicle {
     private String brand;
@@ -6,11 +6,11 @@ public abstract class Vehicle {
     private int year;
     private FuelType fuelType;
 
-    public Vehicle(String marca, String modelo, int año, FuelType tipoCombustible) {
-        this.brand = marca;
-        this.model = modelo;
-        this.year = año;
-        this.fuelType = tipoCombustible;
+    public Vehicle(String brand, String model, int year, FuelType fuelType) {
+        this.brand = brand;
+        this.model = model;
+        this.year = year;
+        this.fuelType = fuelType;
     }
 
 

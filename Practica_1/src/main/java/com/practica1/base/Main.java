@@ -1,9 +1,9 @@
-package base;
+package com.practica1.base;
 
-import model.Car;
-import model.FuelType;
-import model.Motorcycle;
-import model.Vehicle;
+import com.practica1.model.Car;
+import com.practica1.model.FuelType;
+import com.practica1.model.Motorcycle;
+import com.practica1.model.Vehicle;
 
 import java.util.List;
 

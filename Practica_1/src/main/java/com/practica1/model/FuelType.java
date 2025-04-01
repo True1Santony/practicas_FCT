@@ -1,4 +1,4 @@
-package model;
+package com.practica1.model;
 
 public enum FuelType {
     GASOLINE,
