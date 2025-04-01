@@ -22,7 +22,7 @@ public abstract class Vehicle {
         System.out.println("The vehicle is braking.");
     }
 
-    public abstract void mostrarInformacion();
+    public abstract void displayInformation();
 
     public String getBrand() {
         return brand;
