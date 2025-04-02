@@ -4,8 +4,8 @@ public class Motorcycle extends Vehicle{
 
     private int engineDisplacement;  // Cilindrada del motor
 
-    public Motorcycle(String brand, String model, int year, FuelType fuelType,int engineDisplacement) {
-        super(brand, model, year, fuelType);
+    public Motorcycle(String brand, String model, int year, FuelType fuelType,String licensePlate,int engineDisplacement) {
+        super(brand, model, year, fuelType, licensePlate);
         this.engineDisplacement = engineDisplacement;
     }
 
@@ -14,6 +14,7 @@ public class Motorcycle extends Vehicle{
         System.out.println("-------------------------------");
         System.out.println("Motorcycle Information: ");
         System.out.println("Brand: " + getBrand());
+        System.out.println("Licence plate: " + getLicensePlate());
         System.out.println("Model: " + getModel());
         System.out.println("Year: " + getYear());
         System.out.println("Fuel Type: " + getFuelType());

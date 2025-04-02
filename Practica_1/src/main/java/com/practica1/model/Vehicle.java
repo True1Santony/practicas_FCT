@@ -5,14 +5,15 @@ public abstract class Vehicle {
     private String model;
     private int year;
     private FuelType fuelType;
+    private String licensePlate;
 
-    public Vehicle(String brand, String model, int year, FuelType fuelType) {
+    public Vehicle(String brand, String model, int year, FuelType fuelType, String licensePlate) {
         this.brand = brand;
         this.model = model;
         this.year = year;
         this.fuelType = fuelType;
+        this.licensePlate = licensePlate;
     }
-
 
     public void accelerate() {
         System.out.println("The vehicle is accelerating.");
@@ -54,5 +55,13 @@ public abstract class Vehicle {
 
     public void setFuelType(FuelType fuelType) {
         this.fuelType = fuelType;
+    }
+
+    public String getLicensePlate() {
+        return licensePlate;
+    }
+
+    public void setLicensePlate(String licensePlate) {
+        this.licensePlate = licensePlate;
     }
 }

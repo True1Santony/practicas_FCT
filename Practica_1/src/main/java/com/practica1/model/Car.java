@@ -4,8 +4,8 @@ public class Car extends Vehicle{
 
     private int numberOfDoors;
 
-    public Car(String brand, String model, int year, FuelType fuelType, int numbrerOfDoors) {
-        super(brand, model, year, fuelType);
+    public Car(String brand, String model, int year, FuelType fuelType,String licensePlate, int numbrerOfDoors) {
+        super(brand, model, year, fuelType,licensePlate);
         this.numberOfDoors = numbrerOfDoors;
     }
 
@@ -15,6 +15,7 @@ public class Car extends Vehicle{
         System.out.println("Car Information: ");
         System.out.println("Brand: " + getBrand());
         System.out.println("Model: " + getModel());
+        System.out.println("Licence plate: " + getLicensePlate());
         System.out.println("Year: " + getYear());
         System.out.println("Fuel Type: " + getFuelType());
         System.out.println("Number of Doors: " + numberOfDoors);
