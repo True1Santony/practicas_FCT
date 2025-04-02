@@ -1,5 +1,6 @@
 package com.practica1.base;
 
+import com.practica1.service.SvcConcessionaire;
 import com.practica1.service.common.DuplicateLicensePlateException;
 import com.practica1.service.common.EmptyLicensePlateException;
 import com.practica1.service.common.VehicleNotFoundException;
@@ -7,7 +8,6 @@ import com.practica1.model.Car;
 import com.practica1.model.common.FuelType;
 import com.practica1.model.Motorcycle;
 import com.practica1.model.Vehicle;
-import com.practica1.service.Concessionaire;
 
 import java.util.List;
 import java.util.Set;
@@ -15,10 +15,11 @@ import java.util.TreeSet;
 
 public class Main {
 
-    static Concessionaire concessionaireService = new Concessionaire();
+   // static Concessionaire concessionaireService = new Concessionaire();
+
+    static SvcConcessionaire concessionaireService = new SvcConcessionaire();
 
     public static void main(String[] args)  {
-
 
         Vehicle car = new Car("Seat", "Ibiza", 2000, FuelType.GASOLINE,"MA1234ZZ",5);
 
@@ -35,14 +36,12 @@ public class Main {
         }
 
         System.out.println("*************Tarea PRC-12*******************");
-
         Vehicle motorcycle1 = new Motorcycle("Yamaha", "YBR", 2010, FuelType.GASOLINE,"4321CBA", 125);
         Vehicle motorcycle2 = new Motorcycle("Yamaha", "YBR", 2010, FuelType.GASOLINE,"4321CBA", 125);
         Vehicle car1 = new Car("Volkswage", "Golf", 2012, FuelType.DIESEL,"3884HQE",3);
         Vehicle car2 = new Car("Volkswage", "Golf", 2012, FuelType.DIESEL,"3884HQE",3);
 
         //En el main, usar los métodos para añadir vehiculos de distinto tipo.
-
         checkAndAddVehicle(car);
         checkAndAddVehicle(car1);
         checkAndAddVehicle(car2);
@@ -57,20 +56,19 @@ public class Main {
                         .findVehicleByLicensePlate(licencePlate)
                         .displayInformation();
             }
-
         } catch (EmptyLicensePlateException | VehicleNotFoundException e) {
             System.out.println(e.getMessage());
         }
+
         //Usar TreeSet para ordenar por marca y volver a mostrar todos los vehiculos ordenados.
         System.out.println("********************************TreeSet por Marca de vehículo");
 
         Set<Vehicle> sortedVehicles = new TreeSet<>((v1, v2) -> v1.getBrand().compareTo(v2.getBrand()));
-        sortedVehicles.addAll(concessionaireService.getVehicles());
+        sortedVehicles.addAll(concessionaireService.getConcessionaire().getVehicles());
 
         for (Vehicle vehicle : sortedVehicles) {
             vehicle.displayInformation();
         }
-
     }
 
     private static void executeMethods(Vehicle vehicle) {

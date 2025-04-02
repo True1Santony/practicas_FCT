@@ -1,37 +1,37 @@
 package com.practica1.service;
 
+import com.practica1.model.Vehicle;
+import com.practica1.model.Concessionaire;
 import com.practica1.service.common.DuplicateLicensePlateException;
 import com.practica1.service.common.EmptyLicensePlateException;
 import com.practica1.service.common.TypeNotFoundException;
 import com.practica1.service.common.VehicleNotFoundException;
-import com.practica1.model.Vehicle;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
-public class Concessionaire {
-    private List<Vehicle> vehicles;
-    private Map<String,Vehicle> vehiclesByLicensePlate;
-    private Set<String> uniqueVehicleBrands;
+public class SvcConcessionaire {
 
-    public Concessionaire() {
-        this.vehicles = new ArrayList<>();
-        this.vehiclesByLicensePlate = new HashMap<>();
-        this.uniqueVehicleBrands = new HashSet<>();
+    private Concessionaire concessionaire;
+
+    public SvcConcessionaire() {
+        this.concessionaire = new Concessionaire();
     }
 
     //addVehiculo: Si la matrícula ya está en el HashMap, lanzar excepción
     public void addVehicle(Vehicle vehicle) throws DuplicateLicensePlateException {
-        if (vehiclesByLicensePlate.containsKey(vehicle.getLicensePlate())) {
+        if (concessionaire.getVehiclesByLicensePlate().containsKey(vehicle.getLicensePlate())) {
             throw new DuplicateLicensePlateException(vehicle.getLicensePlate());
         }
-        vehicles.add(vehicle);
-        uniqueVehicleBrands.add(vehicle.getBrand());
-        vehiclesByLicensePlate.put(vehicle.getLicensePlate(), vehicle);
+        concessionaire.getVehicles().add(vehicle);
+        concessionaire.getUniqueVehicleBrands().add(vehicle.getBrand());
+        concessionaire.getVehiclesByLicensePlate().put(vehicle.getLicensePlate(), vehicle);
     }
 
     //findVehicleByLicensePlate: Si no existe, lanzar excepción personalizada
     public Vehicle findVehicleByLicensePlate(String licensePlate) throws VehicleNotFoundException {
-        Vehicle vehicle = vehiclesByLicensePlate.get(licensePlate);
+        Vehicle vehicle = concessionaire.getVehiclesByLicensePlate().get(licensePlate);
         if (vehicle == null) {
             throw new VehicleNotFoundException(licensePlate);
         }
@@ -39,17 +39,17 @@ public class Concessionaire {
     }
 
     //getAllLicensePlates: si no hay ninguno lanzar excepción personalizada
-    public Set<String> getAllLicensePlates() throws EmptyLicensePlateException{
-        if (vehiclesByLicensePlate.isEmpty()) {
+    public Set<String> getAllLicensePlates() throws EmptyLicensePlateException {
+        if (concessionaire.getVehiclesByLicensePlate().isEmpty()) {
             throw new EmptyLicensePlateException();
         }
-        return vehiclesByLicensePlate.keySet();
+        return concessionaire.getVehiclesByLicensePlate().keySet();
     }
 
     //filterByType: si no existe el tipo, lanzar excepción personalizada
-    public List<Vehicle> filterByType(Class<?> type) throws TypeNotFoundException{
+    public List<Vehicle> filterByType(Class<?> type) throws TypeNotFoundException {
         List<Vehicle> result = new ArrayList<>();
-        for (Vehicle vehicle: vehicles){
+        for (Vehicle vehicle: concessionaire.getVehicles()){
             if(type.isInstance(vehicle)){
                 result.add(vehicle);
             }
@@ -62,14 +62,14 @@ public class Concessionaire {
 
     //deleteByLicensePlate: si no existe la matricula lanzar excepcion personalizada
     public void deleteByLicensePlate(String licensePlate) throws VehicleNotFoundException{
-        if (!vehiclesByLicensePlate.containsKey(licensePlate)) {
+        if (!concessionaire.getVehiclesByLicensePlate().containsKey(licensePlate)) {
             throw new VehicleNotFoundException(licensePlate);
         }
-        vehicles.remove(vehiclesByLicensePlate.get(licensePlate));
-        vehiclesByLicensePlate.remove(licensePlate);
+        concessionaire.getVehicles().remove(concessionaire.getVehiclesByLicensePlate().get(licensePlate));
+        concessionaire.getVehiclesByLicensePlate().remove(licensePlate);
     }
 
-    public List<Vehicle> getVehicles() {
-        return vehicles;
+    public Concessionaire getConcessionaire() {
+        return concessionaire;
     }
 }
