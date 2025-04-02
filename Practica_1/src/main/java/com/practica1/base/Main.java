@@ -1,5 +1,8 @@
 package com.practica1.base;
 
+import com.practica1.exceptions.DuplicateLicensePlateException;
+import com.practica1.exceptions.EmptyLicensePlateException;
+import com.practica1.exceptions.VehicleNotFoundException;
 import com.practica1.model.Car;
 import com.practica1.model.FuelType;
 import com.practica1.model.Motorcycle;
@@ -11,7 +14,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args)  {
 
         Vehicle car = new Car("Seat", "Ibiza", 2000, FuelType.GASOLINE,"MA1234ZZ",5);
 
@@ -30,23 +33,29 @@ public class Main {
         System.out.println("*************Tarea PRC-12*******************");
 
         Vehicle motorcycle1 = new Motorcycle("Yamaha", "YBR", 2010, FuelType.GASOLINE,"4321CBA", 125);
+        Vehicle motorcycle2 = new Motorcycle("Yamaha", "YBR", 2010, FuelType.GASOLINE,"4321CBA", 125);
         Vehicle car1 = new Car("Volkswage", "Golf", 2012, FuelType.DIESEL,"3884HQE",3);
 
         //En el main, usar los métodos para añadir vehiculos de distinto tipo.
         Concessionaire concessionaireService = new Concessionaire();
 
-        concessionaireService.addVehicle(car);
-        concessionaireService.addVehicle(car1);
-        concessionaireService.addVehicle(motorcycle);
-        concessionaireService.addVehicle(motorcycle1);
+        try {
+            concessionaireService.addVehicle(car);
+            concessionaireService.addVehicle(car1);
+            concessionaireService.addVehicle(motorcycle);
+            concessionaireService.addVehicle(motorcycle1);
+            concessionaireService.addVehicle(motorcycle2);
 
-        //Mostrar la informacion de los vehiculos utilizando los metodos implementados en el punto anterior.
-        for (String licencePlate : concessionaireService.getAllLicensePlates()){
-            concessionaireService
-                    .findVehicleByLicensePlate(licencePlate)
-                    .displayInformation();
+            //Mostrar la informacion de los vehiculos utilizando los metodos implementados en el punto anterior.
+            for (String licencePlate : concessionaireService.getAllLicensePlates()) {
+                concessionaireService
+                        .findVehicleByLicensePlate(licencePlate)
+                        .displayInformation();
+            }
+
+        } catch (DuplicateLicensePlateException | EmptyLicensePlateException | VehicleNotFoundException e) {
+            System.out.println(e.getMessage());
         }
-
         //Usar TreeSet para ordenar por marca y volver a mostrar todos los vehiculos ordenados.
         System.out.println("********************************TreeSet por Marca de vehículo");
 
