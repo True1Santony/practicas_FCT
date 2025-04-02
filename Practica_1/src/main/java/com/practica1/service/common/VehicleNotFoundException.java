@@ -1,6 +1,4 @@
-package com.practica1.exceptions;
-
-import com.practica1.model.Vehicle;
+package com.practica1.service.common;
 
 public class VehicleNotFoundException extends Exception{
     public VehicleNotFoundException(String licensePlate){

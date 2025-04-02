@@ -1,9 +1,9 @@
 package com.practica1.service;
 
-import com.practica1.exceptions.DuplicateLicensePlateException;
-import com.practica1.exceptions.EmptyLicensePlateException;
-import com.practica1.exceptions.TypeNotFoundException;
-import com.practica1.exceptions.VehicleNotFoundException;
+import com.practica1.service.common.DuplicateLicensePlateException;
+import com.practica1.service.common.EmptyLicensePlateException;
+import com.practica1.service.common.TypeNotFoundException;
+import com.practica1.service.common.VehicleNotFoundException;
 import com.practica1.model.Vehicle;
 
 import java.util.*;

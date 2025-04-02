@@ -1,5 +1,7 @@
 package com.practica1.model;
 
+import com.practica1.model.common.FuelType;
+
 public abstract class Vehicle {
     private String brand;
     private String model;

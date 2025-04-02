@@ -1,10 +1,12 @@
 package com.practica1.model;
 
+import com.practica1.model.common.FuelType;
+
 public class Motorcycle extends Vehicle{
 
     private int engineDisplacement;  // Cilindrada del motor
 
-    public Motorcycle(String brand, String model, int year, FuelType fuelType,String licensePlate,int engineDisplacement) {
+    public Motorcycle(String brand, String model, int year, FuelType fuelType, String licensePlate, int engineDisplacement) {
         super(brand, model, year, fuelType, licensePlate);
         this.engineDisplacement = engineDisplacement;
     }

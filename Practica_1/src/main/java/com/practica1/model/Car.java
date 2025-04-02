@@ -1,10 +1,12 @@
 package com.practica1.model;
 
+import com.practica1.model.common.FuelType;
+
 public class Car extends Vehicle{
 
     private int numberOfDoors;
 
-    public Car(String brand, String model, int year, FuelType fuelType,String licensePlate, int numbrerOfDoors) {
+    public Car(String brand, String model, int year, FuelType fuelType, String licensePlate, int numbrerOfDoors) {
         super(brand, model, year, fuelType,licensePlate);
         this.numberOfDoors = numbrerOfDoors;
     }

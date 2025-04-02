@@ -1,10 +1,10 @@
 package com.practica1.base;
 
-import com.practica1.exceptions.DuplicateLicensePlateException;
-import com.practica1.exceptions.EmptyLicensePlateException;
-import com.practica1.exceptions.VehicleNotFoundException;
+import com.practica1.service.common.DuplicateLicensePlateException;
+import com.practica1.service.common.EmptyLicensePlateException;
+import com.practica1.service.common.VehicleNotFoundException;
 import com.practica1.model.Car;
-import com.practica1.model.FuelType;
+import com.practica1.model.common.FuelType;
 import com.practica1.model.Motorcycle;
 import com.practica1.model.Vehicle;
 import com.practica1.service.Concessionaire;
