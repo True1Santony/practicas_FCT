@@ -15,12 +15,15 @@ import java.util.TreeSet;
 
 public class Main {
 
-   // static Concessionaire concessionaireService = new Concessionaire();
-
-    static SvcConcessionaire concessionaireService = new SvcConcessionaire();
+   // static SvcConcessionaire concessionaireService = new SvcConcessionaire();
 
     public static void main(String[] args)  {
+        DatabaseConnection databaseConnection = new DatabaseConnection();
 
+        databaseConnection.initializeDatabase();
+
+    }
+/*
         Vehicle car = new Car("Seat", "Ibiza", 2000, FuelType.GASOLINE,"MA1234ZZ",5);
 
         executeMethods(car);
@@ -84,5 +87,7 @@ public class Main {
             System.out.println(e.getMessage());
         }
     }
+*/
+
 
 }
